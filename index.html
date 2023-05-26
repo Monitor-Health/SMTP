@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulário de Contato</title>
+</head>
+<body>
+  <h1>Formulário de Contato</h1>
+
+    <label for="assunto">Assunto:</label>
+    <input type="text" id="inp_assunto" name="assunto" required><br><br>
+
+    <label for="emailUsuario">E-mail:</label>
+    <input type="inp_email" id="inp_email" name="emailUsuario" required><br><br>
+
+    <label for="nome">Nome:</label>
+    <input type="text" id="inp_nome" name="nome" required><br><br>
+
+    <label for="telefone">Telefone:</label>
+    <input type="text" id="inp_telefone" name="telefone" required><br><br>
+
+    <button onclick="enviar()">enviar</button>
+
+</body>
+</html>
+
+<script>
+     async function enviar(){
+        var assunto = inp_assunto.value
+        var email = inp_email.value
+        var nome = inp_nome.value
+        var telefone = inp_telefone.value
+
+        var resposta =  await fetch ("http://localhost:3000/enviar-email", {
+            method: 'POST', 
+            // headers: {
+            //   "Content-Type": "application/json"
+            // },
+            body:
+            //  JSON.stringify(
+              {
+                assunto: assunto,
+                email: email,
+                nome: nome, 
+                telefone: telefone
+            }
+            // )
+        })
+        
+
+    }
+</script>
